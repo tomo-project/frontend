@@ -1,0 +1,237 @@
+# 공용 UI/구조 컨벤션 문서
+
+## 1. 목적
+
+- React + Vite 기반 프로젝트의 공용 UI와 코드 배치 기준을 정의한다.
+- 재사용 가능한 컴포넌트와 인터페이스를 일관되게 유지한다.
+- 현재 확인된 재사용을 기준으로 코드를 추출하고, 추측에 의한 사전 추상화를 지양한다.
+- 레이어 간 의존 방향을 고정하여 유지보수성과 탐색성을 높인다.
+
+---
+
+## 2. 아키텍처/레이어 컨벤션
+
+### 2.1 적용 기준
+
+- 이 프로젝트는 [Feature-Sliced Design v2.1](https://www.skills.sh/feature-sliced/skills/feature-sliced-design)의 레이어와 의존성 원칙을 참고한다.
+- 앱 진입점과 라우터는 `src/app`, 라우트 화면은 `src/pages`에 배치한다.
+- 프로젝트에 실제로 필요한 레이어만 생성한다.
+- `features`, `entities` 폴더는 **실제 재사용 사례가 생기기 전에는 생성하지 않는다.**
+- `widgets` 레이어는 사용하지 않는다.
+
+### 2.2 라우트 책임
+
+- 라우트 정의는 `src/app`에서 관리하고, 각 화면은 `pages/<slice>`의 공개 API로 연결한다.
+- 특정 페이지에서만 사용하는 코드는 해당 페이지 slice의 segment에 배치한다.
+  - `ui`: 페이지 전용 UI
+  - `model`: 페이지 전용 상태, 검증, 비즈니스 규칙
+  - `api`: 페이지 전용 데이터 요청
+- **페이지 slice의 코드는 다른 페이지에서 직접 import하지 않는다.**
+- 전역 Provider는 `src/app/providers`에 배치한다.
+
+### 2.3 레이어 경계
+
+- `app/*`: 앱 진입점, 라우터, 전역 Provider, 전역 스타일
+- `pages/*`: 라우트 단위 화면과 해당 페이지 전용 코드
+- `shared/*`: 비즈니스 규칙이 없는 공용 기반
+  - `ui`: 공용 UI 컴포넌트
+  - `lib`: 범용 함수와 재사용 가능한 기술 코드
+  - `api`: 공통 API 클라이언트와 범용 요청 기반
+  - `config`: 환경 설정과 공통 설정
+- `features/*`: 여러 화면에서 실제 재사용되는 사용자 행동
+- `entities/*`: 여러 화면이나 feature에서 재사용되는 안정적인 도메인 모델
+- `features`와 `entities`는 필요한 경우에만 생성한다.
+
+### 2.4 의존 방향
+
+- `app -> pages/features/entities/shared`
+- `pages -> features/entities/shared`
+- `features -> entities/shared`
+- `entities -> shared`
+- `shared`는 상위 레이어를 참조하지 않는다.
+- 같은 레이어의 서로 다른 slice를 직접 참조하지 않는다.
+
+### 2.5 추출 기준
+
+- 한 페이지에서만 사용하는 코드는 해당 페이지 slice에 유지한다.
+- 여러 화면에서 재사용되는 사용자 행동은 `features`로 추출한다.
+- 여러 화면에서 재사용되는 안정적인 도메인 모델은 `entities`로 추출한다.
+- 도메인과 무관한 UI와 기술 코드만 `shared`로 이동한다.
+- 향후 재사용 가능성만으로 feature나 entity를 미리 만들지 않는다.
+
+---
+
+## 3. 네이밍/배치 컨벤션
+
+- 공유 기술 코드는 `shared/lib`에 배치한다.
+- `utils.ts`, `helpers.ts`, `types.ts`처럼 범위가 모호한 파일명을 지양한다.
+- 파일명은 담당 도메인이나 목적이 드러나게 작성한다.
+  - `cn.ts`
+  - `format-date.ts`
+  - `query-provider.tsx`
+- `.constants.ts`는 상수의 소유 대상이 명확할 때만 사용한다.
+- 기술적 역할만 나타내는 접미사는 남용하지 않는다.
+
+---
+
+## 4. Export 컨벤션
+
+### 4.1 기본 원칙
+
+- 외부에서 사용하는 모듈은 공개 API인 `index.ts`를 통해 export한다.
+- `index.ts`에는 외부에 공개할 항목만 명시적으로 export한다.
+- 같은 slice 내부에서는 상대경로로 파일을 직접 참조한다.
+- slice 외부에서는 `@/` 절대경로로 공개 API를 참조한다.
+- slice 내부에서는 자기 slice의 공개 API인 `index.ts`를 참조하지 않는다.
+- 상대경로로 slice 경계를 넘어가지 않는다.
+- 같은 레이어의 다른 slice를 직접 참조하지 않는다.
+- `app` 내부 파일끼리, 또는 `shared` 내부 파일끼리 참조할 때는 상대경로와 절대경로 모두 허용한다. 다른 레이어에서 참조할 때는 의존 방향과 공개 API 규칙을 따른다.
+- `shared` 외부에서는 `@/` 절대경로로 segment의 공개 API를 사용한다. `shared` 내부에서는 다른 segment의 파일도 직접 참조할 수 있다.
+- 외부에서는 slice 내부의 `ui`, `model`, `api` 파일을 직접 import하지 않는다.
+
+### 4.2 적용 대상
+
+- `shared/ui/index.ts`
+- `shared/lib/index.ts`
+- `shared/api/index.ts`
+- `pages/<slice>/index.ts`
+- `features/<slice>/index.ts`
+- `entities/<slice>/index.ts`
+
+### 4.3 예시
+
+```tsx
+export { Icon } from './icon';
+export type { IconName, IconProps, IconTone } from './icon';
+```
+
+```tsx
+// features/login/ui/login-step.tsx: 같은 slice 내부
+import { loginSchema } from '../model/login';
+
+// app에서 feature의 공개 API 참조
+import { LoginStep } from '@/features/login';
+
+// 금지: slice 내부에서 자기 공개 API 참조
+import { loginSchema } from '@/features/login';
+
+// 금지: 외부에서 내부 파일 직접 참조
+import { loginSchema } from '@/features/login/model/login';
+
+// 금지: login에서 같은 레이어의 signup 참조
+import { SignupModal } from '@/features/signup';
+```
+
+### 4.4 자동 검사
+
+- `pnpm lint:fsd`로 Steiger와 공식 FSD 플러그인의 import 관련 규칙을 실행한다.
+  - `fsd/forbidden-imports`: 상위 레이어와 같은 레이어의 다른 slice 참조 제한
+  - `fsd/no-public-api-sidestep`: slice 공개 API를 우회하는 외부 참조 제한
+  - `fsd/import-locality`: 같은 slice 내부는 상대경로, 외부는 절대경로 사용
+- `app`과 `shared`는 slice로 나누지 않으므로 `fsd/import-locality`에서 제외한다. 이 설정에서는 해당 규칙이 `pages`·`features`·`entities` 내부 및 상호 참조를 검사한다. 레이어 의존 방향과 slice 공개 API 검사는 유지한다.
+- `pnpm lint`는 기존 ESLint 코드 검사를 실행하며 FSD 경로 제한 규칙은 추가하지 않는다.
+- 다음 프로젝트 규칙은 Steiger가 모두 검사하지 못하므로 리뷰에서 확인한다.
+  - 외부에서 `shared/ui`, `shared/lib` 내부 파일 대신 segment의 공개 API를 사용하는지
+  - `app`·`shared`가 관련된 레이어 간 참조에서 절대경로를 사용하는지
+  - slice 내부에서 상대경로로 자기 공개 API인 `index.ts`를 참조하지 않는지
+  - re-export가 레이어/slice 경계 또는 공개 API를 우회하지 않는지
+  - 변수로 조합한 동적 경로가 import 규칙을 위반하지 않는지
+- 이번 설정은 import 규칙에 한정한다. 재사용 여부, slice 책임, 네이밍과 페이지 slice 경계는 리뷰에서 확인한다.
+- Steiger와 설치된 의존성을 실행하려면 Node.js 22.18 이상인 22.x 또는 24 이상이 필요하다. 실제 사용 버전은 잠금 파일을 따른다.
+
+---
+
+## 5. 공용 UI 컴포넌트 컨벤션
+
+### 5.1 배치 기준
+
+- 비즈니스 문맥이 없는 재사용 가능한 UI만 `shared/ui`에 배치한다.
+- 특정 도메인이나 사용자 행동에 종속된 컴포넌트는 `shared/ui`에 배치하지 않는다.
+- 한 페이지에서만 사용하는 컴포넌트는 해당 페이지 slice의 `ui`에 유지한다.
+
+### 5.2 API 설계
+
+- Props는 재사용 중심으로 설계한다.
+- variant/tone/size 패턴을 일관되게 사용한다.
+- 내부 레이아웃 값, 특히 폭을 하드코딩하지 않는다.
+- 폭 제약은 호출부의 `className` 또는 상위 레이아웃에서 제어한다.
+
+### 5.3 상태 지원
+
+- hover/focus/disabled/error 상태를 확인할 수 있게 만든다.
+- 상태 표현은 스타일 또는 variant 시스템 안에서 일관되게 처리한다.
+
+### 5.4 접근성
+
+- 라벨, 키보드 포커스, ARIA 기본 동작을 보장한다.
+- 네이티브 시맨틱 요소인 `button`, `input` 등을 우선 사용한다.
+
+---
+
+## 6. 스타일/아이콘/공통 코드 컨벤션
+
+### 6.1 스타일
+
+- 클래스 조합은 `shared/lib`의 `cn`으로 통일한다.
+- 전역 스타일과 디자인 토큰은 `src/app/globals.css`에서 관리한다.
+- 디자인 토큰은 [TOMO Figma Foundations](https://www.figma.com/design/wJD1zrOCuk5Vd06ZZHvzAc/TOMO-design?node-id=20-454)의 `Primitives`·`Semantic` 컬렉션에 맞춘다. 변수 이름의 `/`를 `-`로 바꾸고 `--tomo-` 접두사를 붙이며, 시맨틱 변수의 별칭 참조도 유지한다.
+- 색상과 크기 토큰은 `@theme inline`에 각각 `--color-*`, `--spacing-*`로 연결해 사용한다. 선택 상태의 텍스트, 테두리, 배경과 CTA 상태는 해당 시맨틱 색상을 사용한다.
+- `@theme inline`에 연결된 색상·크기·타이포그래피 토큰은 대응하는 Tailwind 유틸리티 클래스로 사용한다. 대응 토큰이 없는 런타임 값이나 계산식은 기존 arbitrary utility로 유지한다. `cn` 병합에 쓰이는 새 이름형 `--spacing-*`, `--text-*` 토큰과 시맨틱 그림자는 `src/shared/lib/cn.ts`의 설정에도 등록한다.
+- 반복되는 스타일 규칙은 공용 UI 또는 명확한 스타일 추상화로 분리한다.
+
+### 6.2 SVG 아이콘
+
+- 색상은 `currentColor` 기반으로 통일한다.
+- 아이콘 내부에 색상을 하드코딩하지 않는다.
+- 색상은 부모 또는 상태 스타일에서 제어한다.
+- 의미가 있는 아이콘에는 접근성 이름을 제공한다.
+- 장식용 아이콘은 보조 기술에서 제외한다.
+
+### 6.3 공통 기술 코드
+
+- 공통 기술 함수는 `shared/lib`에 배치한다.
+- 비즈니스 규칙과 도메인 계산은 `shared`에 배치하지 않는다.
+- 공통 API 클라이언트와 범용 요청 기반은 `shared/api`에 배치한다.
+
+---
+
+## 7. 훅(Hooks) 컨벤션
+
+### 7.1 배치 기준
+
+- 특정 페이지에서만 사용하는 훅은 해당 페이지 slice에 배치한다.
+- 특정 feature에서만 사용하는 훅은 해당 feature에 배치한다.
+- 도메인과 무관하고 여러 곳에서 사용하는 훅만 `shared/lib`에 배치한다.
+- 훅이라는 이유만으로 `shared/hooks`에 모으지 않는다.
+
+### 7.2 책임 분리
+
+- 복잡한 입력 제어, 인터랙션, 상태 관리는 훅으로 분리할 수 있다.
+- 컴포넌트는 렌더링과 조합 책임에 집중한다.
+- 드래그와 클릭 충돌처럼 인터랙션에 결합된 UX 처리는 해당 훅에서 함께 관리한다.
+
+---
+
+## 8. 문서화/검증 컨벤션
+
+### 8.1 Storybook
+
+- 신규 또는 변경 공용 UI에는 스토리를 반드시 추가한다.
+- 사용 가이드 문서인 overview/guide도 함께 최신화한다.
+
+### 8.2 PR 검증 기준
+
+- 코드가 실제 사용 범위에 맞는 레이어에 배치됐는지 확인한다.
+- 불필요한 feature/entity가 미리 생성되지 않았는지 확인한다.
+- 상위 레이어를 역방향으로 참조하지 않는지 확인한다.
+- 공개 API를 우회하여 내부 파일을 직접 import하지 않는지 확인한다.
+- 컴포넌트 역할 중복이나 충돌이 없는지 확인한다.
+- hover/focus/disabled/error 상태를 확인할 수 있는지 검증한다.
+- 키보드 및 접근성 기본 동작을 검증한다.
+- 신규 또는 변경 공용 UI의 Storybook 스토리를 확인한다.
+- 후속 페이지 기능에서 즉시 사용할 수 있는지 확인한다.
+
+### CTA 버튼
+
+- 주요 CTA에는 `Button variant="cta"`를 사용하며 화면당 최대 하나만 배치한다.
+- 폼 제출과 일반 동작은 기본 `Button`을 사용한다.
