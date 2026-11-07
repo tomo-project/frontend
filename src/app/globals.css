@@ -1,0 +1,258 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('./fonts/PretendardVariable.woff2') format('woff2');
+  font-weight: 45 920;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme inline {
+  /* Base colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  /* Semantic: colors */
+  --color-text-default: var(--tomo-text-default);
+  --color-text-subtle: var(--tomo-text-subtle);
+  --color-text-inverse: var(--tomo-text-inverse);
+  --color-text-required: var(--tomo-text-required);
+  --color-bg-default: var(--tomo-bg-default);
+  --color-bg-subtle: var(--tomo-bg-subtle);
+  --color-bg-muted: var(--tomo-bg-muted);
+  --color-bg-strong: var(--tomo-bg-strong);
+  --color-bg-overlay: var(--tomo-bg-overlay);
+  --color-border-subtle: var(--tomo-border-subtle);
+  --color-border-default: var(--tomo-border-default);
+  --color-border-strong: var(--tomo-border-strong);
+  --color-chart-bar: var(--tomo-chart-bar);
+  --color-chart-bar-current: var(--tomo-chart-bar-current);
+  --color-chart-grid: var(--tomo-chart-grid);
+  --color-heatmap-0: var(--tomo-heatmap-0);
+  --color-heatmap-1: var(--tomo-heatmap-1);
+  --color-heatmap-2: var(--tomo-heatmap-2);
+  --color-heatmap-3: var(--tomo-heatmap-3);
+  --color-heatmap-4: var(--tomo-heatmap-4);
+  --color-annotation-fold: var(--tomo-annotation-fold);
+
+  /* Semantic: fonts */
+  --font-sans: var(--tomo-font-family-sans);
+  --font-heading: var(--tomo-font-family-sans);
+
+  /* Semantic: typography */
+  --text-display: 48px;
+  --text-display--line-height: 56px;
+  --text-display--font-weight: var(--tomo-font-weight-bold);
+  --text-heading-1: 36px;
+  --text-heading-1--line-height: 44px;
+  --text-heading-1--font-weight: var(--tomo-font-weight-bold);
+  --text-heading-2: 24px;
+  --text-heading-2--line-height: 32px;
+  --text-heading-2--font-weight: var(--tomo-font-weight-bold);
+  --text-heading-3: 20px;
+  --text-heading-3--line-height: 28px;
+  --text-heading-3--font-weight: var(--tomo-font-weight-bold);
+  --text-body: 16px;
+  --text-body--line-height: 24px;
+  --text-body--font-weight: var(--tomo-font-weight-regular);
+  --text-body-bold: 16px;
+  --text-body-bold--line-height: 24px;
+  --text-body-bold--font-weight: var(--tomo-font-weight-bold);
+  --text-small: 14px;
+  --text-small--line-height: 20px;
+  --text-small--font-weight: var(--tomo-font-weight-regular);
+  --text-small-bold: 14px;
+  --text-small-bold--line-height: 20px;
+  --text-small-bold--font-weight: var(--tomo-font-weight-bold);
+  --text-caption: 12px;
+  --text-caption--line-height: 16px;
+  --text-caption--font-weight: var(--tomo-font-weight-regular);
+
+  /* Semantic: spacing */
+  --spacing-4: var(--tomo-spacing-4);
+  --spacing-8: var(--tomo-spacing-8);
+  --spacing-12: var(--tomo-spacing-12);
+  --spacing-16: var(--tomo-spacing-16);
+  --spacing-24: var(--tomo-spacing-24);
+  --spacing-32: var(--tomo-spacing-32);
+  --spacing-48: var(--tomo-spacing-48);
+  --spacing-64: var(--tomo-spacing-64);
+
+  /* Semantic: sizes */
+  --spacing-control: var(--tomo-size-control);
+  --container-content: var(--tomo-size-content);
+
+  /* Shadcn colors */
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+
+  /* Semantic: border radii */
+  --radius-sm: var(--tomo-radius-sm);
+  --radius-md: var(--tomo-radius-md);
+  --radius-full: var(--tomo-radius-full);
+
+  /* Effect styles */
+  --shadow-dialog:
+    0 10px 15px -3px var(--tomo-shadow-dialog), 0 4px 6px -4px var(--tomo-shadow-dialog);
+}
+
+:root {
+  /* Primitive: colors */
+  --tomo-gray-0: #ffffff;
+  --tomo-gray-100: #f4f4f4;
+  --tomo-gray-200: #e6e6e6;
+  --tomo-gray-300: #c4c4c4;
+  --tomo-gray-400: #8a8a8a;
+  --tomo-gray-500: #6b6b6b;
+  --tomo-gray-900: #222222;
+  --tomo-black-a50: rgb(0 0 0 / 50%);
+  --tomo-black-a10: rgb(0 0 0 / 10%);
+  --tomo-red-500: #e53935;
+  --tomo-red-700: #d32f2f;
+
+  /* Semantic: text colors */
+  --tomo-text-default: var(--tomo-gray-900);
+  --tomo-text-subtle: var(--tomo-gray-500);
+  --tomo-text-inverse: var(--tomo-gray-0);
+  --tomo-text-required: var(--tomo-red-700);
+
+  /* Semantic: background colors */
+  --tomo-bg-default: var(--tomo-gray-0);
+  --tomo-bg-subtle: var(--tomo-gray-100);
+  --tomo-bg-muted: var(--tomo-gray-200);
+  --tomo-bg-strong: var(--tomo-gray-900);
+  --tomo-bg-overlay: var(--tomo-black-a50);
+
+  /* Semantic: border colors */
+  --tomo-border-subtle: var(--tomo-gray-300);
+  --tomo-border-default: var(--tomo-gray-400);
+  --tomo-border-strong: var(--tomo-gray-900);
+
+  /* Semantic: chart colors */
+  --tomo-chart-bar: var(--tomo-gray-400);
+  --tomo-chart-bar-current: var(--tomo-gray-900);
+  --tomo-chart-grid: var(--tomo-gray-200);
+
+  /* Semantic: heatmap colors */
+  --tomo-heatmap-0: var(--tomo-gray-0);
+  --tomo-heatmap-1: var(--tomo-gray-200);
+  --tomo-heatmap-2: var(--tomo-gray-300);
+  --tomo-heatmap-3: var(--tomo-gray-400);
+  --tomo-heatmap-4: var(--tomo-gray-900);
+
+  /* Semantic: effect and annotation colors */
+  --tomo-shadow-dialog: var(--tomo-black-a10);
+  --tomo-annotation-fold: var(--tomo-red-500);
+
+  /* Primitive: font families */
+  --tomo-font-family-sans: 'Pretendard', Arial, sans-serif;
+
+  /* Primitive: font weights */
+  --tomo-font-weight-regular: 400;
+  --tomo-font-weight-bold: 700;
+
+  /* Semantic: spacing */
+  --tomo-spacing-4: 4px;
+  --tomo-spacing-8: 8px;
+  --tomo-spacing-12: 12px;
+  --tomo-spacing-16: 16px;
+  --tomo-spacing-24: 24px;
+  --tomo-spacing-32: 32px;
+  --tomo-spacing-48: 48px;
+  --tomo-spacing-64: 64px;
+
+  /* Semantic: sizes */
+  --tomo-size-control: 44px;
+  --tomo-size-content: 1280px;
+
+  /* Semantic: border radii */
+  --tomo-radius-sm: 4px;
+  --tomo-radius-md: 8px;
+  --tomo-radius-full: 9999px;
+
+  /* Shadcn light theme mappings */
+  --card: var(--tomo-bg-default);
+  --card-foreground: var(--tomo-text-default);
+  --popover: var(--tomo-bg-default);
+  --popover-foreground: var(--tomo-text-default);
+  --primary: var(--tomo-bg-strong);
+  --primary-foreground: var(--tomo-text-inverse);
+  --secondary: var(--tomo-bg-subtle);
+  --secondary-foreground: var(--tomo-text-default);
+  --muted: var(--tomo-bg-subtle);
+  --muted-foreground: var(--tomo-text-subtle);
+  --accent: var(--tomo-bg-subtle);
+  --accent-foreground: var(--tomo-text-default);
+  --destructive: var(--tomo-text-required);
+  --border: var(--tomo-border-subtle);
+  --input: var(--tomo-border-default);
+  --ring: var(--tomo-border-default);
+
+  /* Chart colors */
+  --chart-1: var(--tomo-gray-200);
+  --chart-2: var(--tomo-gray-300);
+  --chart-3: var(--tomo-gray-400);
+  --chart-4: var(--tomo-gray-500);
+  --chart-5: var(--tomo-gray-900);
+
+  /* Shared radius */
+  --radius: var(--tomo-radius-sm);
+
+  /* Sidebar colors */
+  --sidebar: var(--tomo-bg-subtle);
+  --sidebar-foreground: var(--tomo-text-default);
+  --sidebar-primary: var(--tomo-bg-strong);
+  --sidebar-primary-foreground: var(--tomo-text-inverse);
+  --sidebar-accent: var(--tomo-bg-muted);
+  --sidebar-accent-foreground: var(--tomo-text-default);
+  --sidebar-border: var(--tomo-border-subtle);
+  --sidebar-ring: var(--tomo-border-default);
+
+  /* Page colors */
+  --background: var(--tomo-bg-default);
+  --foreground: var(--tomo-text-default);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
