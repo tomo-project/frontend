@@ -1,0 +1,128 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs/blocks';
+
+<Meta title="Tokens/Colors" />
+
+# Colors
+
+Tailwind 클래스에서는 `--color-` 접두사를 뺀 이름으로 사용합니다.  
+(예: `text-text-subtle`, `bg-bg-muted`, `border-border-strong`)
+
+<br />
+
+## Primitive
+
+<ColorPalette>
+  <ColorItem
+    title="Gray"
+    subtitle="--tomo-gray-*"
+    colors={{
+      0: 'var(--tomo-gray-0)',
+      100: 'var(--tomo-gray-100)',
+      200: 'var(--tomo-gray-200)',
+      300: 'var(--tomo-gray-300)',
+      400: 'var(--tomo-gray-400)',
+      500: 'var(--tomo-gray-500)',
+      900: 'var(--tomo-gray-900)',
+    }}
+  />
+  <ColorItem
+    title="Red"
+    subtitle="--tomo-red-*"
+    colors={{ 500: 'var(--tomo-red-500)', 700: 'var(--tomo-red-700)' }}
+  />
+  <ColorItem
+    title="Black Alpha"
+    subtitle="--tomo-black-a*"
+    colors={{ a10: 'var(--tomo-black-a10)', a50: 'var(--tomo-black-a50)' }}
+  />
+</ColorPalette>
+
+## Semantic
+
+<ColorPalette>
+  <ColorItem
+    title="Text"
+    subtitle="text-text-*"
+    colors={{
+      default: 'var(--tomo-text-default)',
+      subtle: 'var(--tomo-text-subtle)',
+      inverse: 'var(--tomo-text-inverse)',
+      required: 'var(--tomo-text-required)',
+    }}
+  />
+  <ColorItem
+    title="Background"
+    subtitle="bg-bg-*"
+    colors={{
+      default: 'var(--tomo-bg-default)',
+      subtle: 'var(--tomo-bg-subtle)',
+      muted: 'var(--tomo-bg-muted)',
+      strong: 'var(--tomo-bg-strong)',
+      overlay: 'var(--tomo-bg-overlay)',
+    }}
+  />
+  <ColorItem
+    title="Border"
+    subtitle="border-border-*"
+    colors={{
+      subtle: 'var(--tomo-border-subtle)',
+      default: 'var(--tomo-border-default)',
+      strong: 'var(--tomo-border-strong)',
+    }}
+  />
+  <ColorItem
+    title="Chart"
+    subtitle="*-chart-*"
+    colors={{
+      bar: 'var(--tomo-chart-bar)',
+      'bar-current': 'var(--tomo-chart-bar-current)',
+      grid: 'var(--tomo-chart-grid)',
+    }}
+  />
+  <ColorItem
+    title="Heatmap"
+    subtitle="*-heatmap-0 ~ 4"
+    colors={{
+      0: 'var(--tomo-heatmap-0)',
+      1: 'var(--tomo-heatmap-1)',
+      2: 'var(--tomo-heatmap-2)',
+      3: 'var(--tomo-heatmap-3)',
+      4: 'var(--tomo-heatmap-4)',
+    }}
+  />
+  <ColorItem
+    title="Annotation"
+    subtitle="*-annotation-fold"
+    colors={{ fold: 'var(--tomo-annotation-fold)' }}
+  />
+</ColorPalette>
+
+## shadcn 매핑
+
+<ColorPalette>
+  <ColorItem
+    title="Primary / Secondary"
+    subtitle="bg-primary, bg-secondary"
+    colors={{
+      primary: 'var(--primary)',
+      'primary-fg': 'var(--primary-foreground)',
+      secondary: 'var(--secondary)',
+      'secondary-fg': 'var(--secondary-foreground)',
+    }}
+  />
+  <ColorItem
+    title="Muted / Accent / Destructive"
+    subtitle="bg-muted, bg-accent, text-destructive"
+    colors={{
+      muted: 'var(--muted)',
+      'muted-fg': 'var(--muted-foreground)',
+      accent: 'var(--accent)',
+      destructive: 'var(--destructive)',
+    }}
+  />
+  <ColorItem
+    title="Border / Input / Ring"
+    subtitle="border-border, border-input, ring-ring"
+    colors={{ border: 'var(--border)', input: 'var(--input)', ring: 'var(--ring)' }}
+  />
+</ColorPalette>

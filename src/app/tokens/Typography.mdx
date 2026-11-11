@@ -1,0 +1,39 @@
+import { Meta, Unstyled } from '@storybook/addon-docs/blocks';
+
+<Meta title="Tokens/Typography" />
+
+# Typography
+
+폰트: **Pretendard** (`font-sans`, `font-heading`)
+
+아래 예시는 실제 Tailwind 클래스로 렌더링됩니다.
+
+<br />
+
+export const scale = [
+  { cls: 'text-display', size: '48 / 56', weight: 'Bold' },
+  { cls: 'text-heading-1', size: '36 / 44', weight: 'Bold' },
+  { cls: 'text-heading-2', size: '24 / 32', weight: 'Bold' },
+  { cls: 'text-heading-3', size: '20 / 28', weight: 'Bold' },
+  { cls: 'text-body', size: '16 / 24', weight: 'Regular' },
+  { cls: 'text-body-bold', size: '16 / 24', weight: 'Bold' },
+  { cls: 'text-small', size: '14 / 20', weight: 'Regular' },
+  { cls: 'text-small-bold', size: '14 / 20', weight: 'Bold' },
+  { cls: 'text-caption', size: '12 / 16', weight: 'Regular' },
+];
+
+<Unstyled>
+  <div className="flex flex-col gap-24 font-sans text-text-default">
+    {scale.map(({ cls, size, weight }) => (
+      <div key={cls} className="flex items-baseline gap-24 border-b border-border-subtle pb-16">
+        <div className="w-[180px] shrink-0">
+          <code className="text-small">{cls}</code>
+          <div className="text-caption text-text-subtle">
+            {size}px · {weight}
+          </div>
+        </div>
+        <span className={cls}>오늘의 작은 집중, TOMO와 함께해요. 123</span>
+      </div>
+    ))}
+  </div>
+</Unstyled>
