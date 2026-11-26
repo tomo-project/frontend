@@ -15,7 +15,14 @@ const preview: Preview = {
     backgrounds: { disable: true },
     options: {
       storySort: {
-        order: ['Tokens', ['Colors', 'Typography', 'Spacing & Radius'], 'Components', '*'],
+        order: [
+          'Introduction',
+          'Tokens',
+          ['Colors', 'Typography', 'Spacing & Radius', 'Elevation'],
+          'Components',
+          'Examples',
+          '*',
+        ],
       },
     },
   },

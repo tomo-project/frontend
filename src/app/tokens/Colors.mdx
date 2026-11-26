@@ -4,61 +4,60 @@ import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs/blocks';
 
 # Colors
 
+화면에는 Semantic 색만 씁니다. Primitive는 Semantic의 별칭 대상이며 직접 쓰지 않습니다.
+
 Tailwind 클래스에서는 `--color-` 접두사를 뺀 이름으로 사용합니다.  
-(예: `text-text-subtle`, `bg-bg-muted`, `border-border-strong`)
+(예: `bg-bg-soft`, `text-text-muted`, `bg-accent-tomato`, `border-border-focus`)
 
 <br />
-
-## Primitive
-
-<ColorPalette>
-  <ColorItem
-    title="Gray"
-    subtitle="--tomo-gray-*"
-    colors={{
-      0: 'var(--tomo-gray-0)',
-      100: 'var(--tomo-gray-100)',
-      200: 'var(--tomo-gray-200)',
-      300: 'var(--tomo-gray-300)',
-      400: 'var(--tomo-gray-400)',
-      500: 'var(--tomo-gray-500)',
-      900: 'var(--tomo-gray-900)',
-    }}
-  />
-  <ColorItem
-    title="Red"
-    subtitle="--tomo-red-*"
-    colors={{ 500: 'var(--tomo-red-500)', 700: 'var(--tomo-red-700)' }}
-  />
-  <ColorItem
-    title="Black Alpha"
-    subtitle="--tomo-black-a*"
-    colors={{ a10: 'var(--tomo-black-a10)', a50: 'var(--tomo-black-a50)' }}
-  />
-</ColorPalette>
 
 ## Semantic
 
 <ColorPalette>
   <ColorItem
-    title="Text"
-    subtitle="text-text-*"
-    colors={{
-      default: 'var(--tomo-text-default)',
-      subtle: 'var(--tomo-text-subtle)',
-      inverse: 'var(--tomo-text-inverse)',
-      required: 'var(--tomo-text-required)',
-    }}
-  />
-  <ColorItem
     title="Background"
     subtitle="bg-bg-*"
     colors={{
-      default: 'var(--tomo-bg-default)',
-      subtle: 'var(--tomo-bg-subtle)',
-      muted: 'var(--tomo-bg-muted)',
-      strong: 'var(--tomo-bg-strong)',
+      page: 'var(--tomo-bg-page)',
+      card: 'var(--tomo-bg-card)',
+      soft: 'var(--tomo-bg-soft)',
+      well: 'var(--tomo-bg-well)',
+      disabled: 'var(--tomo-bg-disabled)',
+      'control-off': 'var(--tomo-bg-control-off)',
       overlay: 'var(--tomo-bg-overlay)',
+    }}
+  />
+  <ColorItem
+    title="Text"
+    subtitle="text-text-*"
+    colors={{
+      primary: 'var(--tomo-text-primary)',
+      secondary: 'var(--tomo-text-secondary)',
+      muted: 'var(--tomo-text-muted)',
+      disabled: 'var(--tomo-text-disabled)',
+      'on-accent': 'var(--tomo-text-on-accent)',
+    }}
+  />
+  <ColorItem
+    title="Accent"
+    subtitle="*-accent-tomato*"
+    colors={{
+      tomato: 'var(--tomo-accent-tomato)',
+      'tomato-pressed': 'var(--tomo-accent-tomato-pressed)',
+      'tomato-soft': 'var(--tomo-accent-tomato-soft)',
+    }}
+  />
+  <ColorItem
+    title="Status"
+    subtitle="text-text-{tone}, bg-bg-{tone}, *-status-done"
+    colors={{
+      'text-danger': 'var(--tomo-text-danger)',
+      'bg-danger': 'var(--tomo-bg-danger)',
+      'text-warning': 'var(--tomo-text-warning)',
+      'bg-warning': 'var(--tomo-bg-warning)',
+      'text-success': 'var(--tomo-text-success)',
+      'bg-success': 'var(--tomo-bg-success)',
+      'status-done': 'var(--tomo-status-done)',
     }}
   />
   <ColorItem
@@ -66,17 +65,19 @@ Tailwind 클래스에서는 `--color-` 접두사를 뺀 이름으로 사용합�
     subtitle="border-border-*"
     colors={{
       subtle: 'var(--tomo-border-subtle)',
-      default: 'var(--tomo-border-default)',
       strong: 'var(--tomo-border-strong)',
+      focus: 'var(--tomo-border-focus)',
+      danger: 'var(--tomo-border-danger)',
     }}
   />
   <ColorItem
-    title="Chart"
-    subtitle="*-chart-*"
+    title="Timer"
+    subtitle="*-timer-*"
     colors={{
-      bar: 'var(--tomo-chart-bar)',
-      'bar-current': 'var(--tomo-chart-bar-current)',
-      grid: 'var(--tomo-chart-grid)',
+      focus: 'var(--tomo-timer-focus)',
+      break: 'var(--tomo-timer-break)',
+      tick: 'var(--tomo-timer-tick)',
+      'tick-major': 'var(--tomo-timer-tick-major)',
     }}
   />
   <ColorItem
@@ -91,13 +92,96 @@ Tailwind 클래스에서는 `--color-` 접두사를 뺀 이름으로 사용합�
     }}
   />
   <ColorItem
-    title="Annotation"
-    subtitle="*-annotation-fold"
-    colors={{ fold: 'var(--tomo-annotation-fold)' }}
+    title="Chart"
+    subtitle="*-chart-*"
+    colors={{
+      bar: 'var(--tomo-chart-bar)',
+      'bar-current': 'var(--tomo-chart-bar-current)',
+      grid: 'var(--tomo-chart-grid)',
+    }}
+  />
+  <ColorItem
+    title="Brand"
+    subtitle="*-brand-*"
+    colors={{
+      kakao: 'var(--tomo-brand-kakao)',
+      'kakao-text / kakao-foreground': 'var(--tomo-brand-kakao-text)',
+      google: 'var(--tomo-brand-google)',
+    }}
+  />
+</ColorPalette>
+
+## Primitive
+
+<ColorPalette>
+  <ColorItem
+    title="Warm"
+    subtitle="--tomo-warm-*"
+    colors={{
+      0: 'var(--tomo-warm-0)',
+      25: 'var(--tomo-warm-25)',
+      500: 'var(--tomo-warm-500)',
+      600: 'var(--tomo-warm-600)',
+      900: 'var(--tomo-warm-900)',
+    }}
+  />
+  <ColorItem
+    title="Neutral"
+    subtitle="--tomo-neutral-*"
+    colors={{
+      100: 'var(--tomo-neutral-100)',
+      200: 'var(--tomo-neutral-200)',
+      300: 'var(--tomo-neutral-300)',
+      400: 'var(--tomo-neutral-400)',
+      500: 'var(--tomo-neutral-500)',
+    }}
+  />
+  <ColorItem
+    title="Tomato"
+    subtitle="--tomo-tomato-*"
+    colors={{
+      50: 'var(--tomo-tomato-50)',
+      100: 'var(--tomo-tomato-100)',
+      300: 'var(--tomo-tomato-300)',
+      500: 'var(--tomo-tomato-500)',
+      600: 'var(--tomo-tomato-600)',
+    }}
+  />
+  <ColorItem
+    title="Leaf"
+    subtitle="--tomo-leaf-*"
+    colors={{
+      50: 'var(--tomo-leaf-50)',
+      100: 'var(--tomo-leaf-100)',
+      200: 'var(--tomo-leaf-200)',
+      300: 'var(--tomo-leaf-300)',
+      500: 'var(--tomo-leaf-500)',
+      700: 'var(--tomo-leaf-700)',
+    }}
+  />
+  <ColorItem
+    title="Amber · Black"
+    subtitle="--tomo-amber-*, --tomo-black-a40"
+    colors={{
+      'amber-50': 'var(--tomo-amber-50)',
+      'amber-600': 'var(--tomo-amber-600)',
+      'black-a40': 'var(--tomo-black-a40)',
+    }}
+  />
+  <ColorItem
+    title="Brand"
+    subtitle="--tomo-brand-*"
+    colors={{
+      kakao: 'var(--tomo-brand-kakao)',
+      'kakao-ink': 'var(--tomo-brand-kakao-ink)',
+      'google-blue': 'var(--tomo-brand-google-blue)',
+    }}
   />
 </ColorPalette>
 
 ## shadcn 매핑
+
+Figma 변수의 코드 문법(code syntax)과 같은 대응입니다.
 
 <ColorPalette>
   <ColorItem

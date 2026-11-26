@@ -18,71 +18,118 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  /* Semantic: colors */
-  --color-text-default: var(--tomo-text-default);
-  --color-text-subtle: var(--tomo-text-subtle);
-  --color-text-inverse: var(--tomo-text-inverse);
-  --color-text-required: var(--tomo-text-required);
-  --color-bg-default: var(--tomo-bg-default);
-  --color-bg-subtle: var(--tomo-bg-subtle);
-  --color-bg-muted: var(--tomo-bg-muted);
-  --color-bg-strong: var(--tomo-bg-strong);
+  /* Semantic: background colors */
+  --color-bg-page: var(--tomo-bg-page);
+  --color-bg-card: var(--tomo-bg-card);
+  --color-bg-soft: var(--tomo-bg-soft);
+  --color-bg-well: var(--tomo-bg-well);
+  --color-bg-disabled: var(--tomo-bg-disabled);
+  --color-bg-control-off: var(--tomo-bg-control-off);
   --color-bg-overlay: var(--tomo-bg-overlay);
+  --color-bg-danger: var(--tomo-bg-danger);
+  --color-bg-warning: var(--tomo-bg-warning);
+  --color-bg-success: var(--tomo-bg-success);
+
+  /* Semantic: text colors */
+  --color-text-primary: var(--tomo-text-primary);
+  --color-text-secondary: var(--tomo-text-secondary);
+  --color-text-muted: var(--tomo-text-muted);
+  --color-text-disabled: var(--tomo-text-disabled);
+  --color-text-on-accent: var(--tomo-text-on-accent);
+  --color-text-danger: var(--tomo-text-danger);
+  --color-text-warning: var(--tomo-text-warning);
+  --color-text-success: var(--tomo-text-success);
+
+  /* Semantic: accent and status colors */
+  --color-accent-tomato: var(--tomo-accent-tomato);
+  --color-accent-tomato-pressed: var(--tomo-accent-tomato-pressed);
+  --color-accent-tomato-soft: var(--tomo-accent-tomato-soft);
+  --color-status-done: var(--tomo-status-done);
+
+  /* Semantic: border colors */
   --color-border-subtle: var(--tomo-border-subtle);
-  --color-border-default: var(--tomo-border-default);
   --color-border-strong: var(--tomo-border-strong);
-  --color-chart-bar: var(--tomo-chart-bar);
-  --color-chart-bar-current: var(--tomo-chart-bar-current);
-  --color-chart-grid: var(--tomo-chart-grid);
+  --color-border-focus: var(--tomo-border-focus);
+  --color-border-danger: var(--tomo-border-danger);
+
+  /* Semantic: domain colors */
+  --color-timer-focus: var(--tomo-timer-focus);
+  --color-timer-break: var(--tomo-timer-break);
+  --color-timer-tick: var(--tomo-timer-tick);
+  --color-timer-tick-major: var(--tomo-timer-tick-major);
   --color-heatmap-0: var(--tomo-heatmap-0);
   --color-heatmap-1: var(--tomo-heatmap-1);
   --color-heatmap-2: var(--tomo-heatmap-2);
   --color-heatmap-3: var(--tomo-heatmap-3);
   --color-heatmap-4: var(--tomo-heatmap-4);
-  --color-annotation-fold: var(--tomo-annotation-fold);
+  --color-chart-bar: var(--tomo-chart-bar);
+  --color-chart-bar-current: var(--tomo-chart-bar-current);
+  --color-chart-grid: var(--tomo-chart-grid);
+  --color-brand-kakao: var(--tomo-brand-kakao);
+  --color-brand-kakao-text: var(--tomo-brand-kakao-text);
+  /* 이슈 #8의 이름(kakao-foreground). Figma 이름 brand/kakao-text와 같은 색 */
+  --color-brand-kakao-foreground: var(--tomo-brand-kakao-text);
+  --color-brand-google: var(--tomo-brand-google);
 
   /* Semantic: fonts */
   --font-sans: var(--tomo-font-family-sans);
   --font-heading: var(--tomo-font-family-sans);
 
   /* Semantic: typography */
+  --text-timer-xl: 96px;
+  --text-timer-xl--line-height: 1.1;
+  --text-timer-xl--letter-spacing: -1px;
+  --text-timer-xl--font-weight: var(--tomo-font-weight-bold);
   --text-display: 48px;
-  --text-display--line-height: 56px;
+  --text-display--line-height: 1.2;
+  --text-display--letter-spacing: -0.5px;
   --text-display--font-weight: var(--tomo-font-weight-bold);
   --text-heading-1: 36px;
-  --text-heading-1--line-height: 44px;
+  --text-heading-1--line-height: 1.3;
+  --text-heading-1--letter-spacing: -0.5px;
   --text-heading-1--font-weight: var(--tomo-font-weight-bold);
   --text-heading-2: 24px;
-  --text-heading-2--line-height: 32px;
+  --text-heading-2--line-height: 1.4;
   --text-heading-2--font-weight: var(--tomo-font-weight-bold);
   --text-heading-3: 20px;
-  --text-heading-3--line-height: 28px;
+  --text-heading-3--line-height: 1.4;
   --text-heading-3--font-weight: var(--tomo-font-weight-bold);
   --text-body: 16px;
-  --text-body--line-height: 24px;
+  --text-body--line-height: 1.6;
   --text-body--font-weight: var(--tomo-font-weight-regular);
   --text-body-bold: 16px;
-  --text-body-bold--line-height: 24px;
+  --text-body-bold--line-height: 1.6;
   --text-body-bold--font-weight: var(--tomo-font-weight-bold);
-  --text-small: 14px;
-  --text-small--line-height: 20px;
-  --text-small--font-weight: var(--tomo-font-weight-regular);
-  --text-small-bold: 14px;
-  --text-small-bold--line-height: 20px;
-  --text-small-bold--font-weight: var(--tomo-font-weight-bold);
+  --text-label: 14px;
+  --text-label--line-height: 1.5;
+  --text-label--font-weight: var(--tomo-font-weight-regular);
+  --text-label-bold: 14px;
+  --text-label-bold--line-height: 1.5;
+  --text-label-bold--font-weight: var(--tomo-font-weight-bold);
   --text-caption: 12px;
-  --text-caption--line-height: 16px;
+  --text-caption--line-height: 1.5;
   --text-caption--font-weight: var(--tomo-font-weight-regular);
+  --text-caption-bold: 12px;
+  --text-caption-bold--line-height: 1.5;
+  --text-caption-bold--font-weight: var(--tomo-font-weight-bold);
+  --text-logo: 20px;
+  --text-logo--line-height: 1.2;
+  --text-logo--letter-spacing: 2px;
+  --text-logo--font-weight: var(--tomo-font-weight-bold);
 
   /* Semantic: spacing */
-  --spacing-4: var(--tomo-spacing-4);
-  --spacing-8: var(--tomo-spacing-8);
-  --spacing-12: var(--tomo-spacing-12);
-  --spacing-16: var(--tomo-spacing-16);
-  --spacing-24: var(--tomo-spacing-24);
-  --spacing-32: var(--tomo-spacing-32);
-  --spacing-48: var(--tomo-spacing-48);
-  --spacing-64: var(--tomo-spacing-64);
+  --spacing-2: var(--tomo-space-2);
+  --spacing-4: var(--tomo-space-4);
+  --spacing-8: var(--tomo-space-8);
+  --spacing-12: var(--tomo-space-12);
+  --spacing-16: var(--tomo-space-16);
+  --spacing-20: var(--tomo-space-20);
+  --spacing-24: var(--tomo-space-24);
+  --spacing-32: var(--tomo-space-32);
+  --spacing-40: var(--tomo-space-40);
+  --spacing-48: var(--tomo-space-48);
+  --spacing-64: var(--tomo-space-64);
+  --spacing-80: var(--tomo-space-80);
 
   /* Semantic: sizes */
   --spacing-control: var(--tomo-size-control);
@@ -120,62 +167,125 @@
   --color-card: var(--card);
 
   /* Semantic: border radii */
+  --radius-xs: var(--tomo-radius-xs);
   --radius-sm: var(--tomo-radius-sm);
   --radius-md: var(--tomo-radius-md);
+  --radius-lg: var(--tomo-radius-lg);
+  --radius-xl: var(--tomo-radius-xl);
+  --radius-2xl: var(--tomo-radius-2xl);
+  --radius-3xl: var(--tomo-radius-3xl);
   --radius-full: var(--tomo-radius-full);
 
-  /* Effect styles */
-  --shadow-dialog:
-    0 10px 15px -3px var(--tomo-shadow-dialog), 0 4px 6px -4px var(--tomo-shadow-dialog);
+  /* Effect styles: flat (white page) */
+  --shadow-card: var(--tomo-shadow-card);
+  --shadow-popover: var(--tomo-shadow-popover);
+  --shadow-dialog: var(--tomo-shadow-dialog);
+
+  /* Effect styles: neumorphism (bg-soft tray only) */
+  --shadow-raised-sm: var(--tomo-shadow-raised-sm);
+  --shadow-raised-md: var(--tomo-shadow-raised-md);
+  --shadow-raised-lg: var(--tomo-shadow-raised-lg);
+  --shadow-inset: var(--tomo-shadow-inset);
+  --shadow-primary: var(--tomo-shadow-primary);
 }
 
 :root {
-  /* Primitive: colors */
-  --tomo-gray-0: #ffffff;
-  --tomo-gray-100: #f4f4f4;
-  --tomo-gray-200: #e6e6e6;
-  --tomo-gray-300: #c4c4c4;
-  --tomo-gray-400: #8a8a8a;
-  --tomo-gray-500: #6b6b6b;
-  --tomo-gray-900: #222222;
-  --tomo-black-a50: rgb(0 0 0 / 50%);
-  --tomo-black-a10: rgb(0 0 0 / 10%);
-  --tomo-red-500: #e53935;
-  --tomo-red-700: #d32f2f;
+  /* Primitive: warm */
+  --tomo-warm-0: #ffffff;
+  --tomo-warm-25: #fefefe;
+  --tomo-warm-500: #8f8780;
+  --tomo-warm-600: #6b635d;
+  --tomo-warm-900: #2b2623;
 
-  /* Semantic: text colors */
-  --tomo-text-default: var(--tomo-gray-900);
-  --tomo-text-subtle: var(--tomo-gray-500);
-  --tomo-text-inverse: var(--tomo-gray-0);
-  --tomo-text-required: var(--tomo-red-700);
+  /* Primitive: neutral */
+  --tomo-neutral-100: #f5f5f7;
+  --tomo-neutral-200: #ebebee;
+  --tomo-neutral-300: #dcdce0;
+  --tomo-neutral-400: #c9c9ce;
+  --tomo-neutral-500: #a3a3ab;
+
+  /* Primitive: tomato */
+  --tomo-tomato-50: #fbedeb;
+  --tomo-tomato-100: #f6d3d0;
+  --tomo-tomato-300: #e98a85;
+  --tomo-tomato-500: #d94b45;
+  --tomo-tomato-600: #bf3d37;
+
+  /* Primitive: leaf */
+  --tomo-leaf-50: #eef4ea;
+  --tomo-leaf-100: #d6e6cc;
+  --tomo-leaf-200: #b3d09f;
+  --tomo-leaf-300: #86b06c;
+  --tomo-leaf-500: #5e8a4e;
+  --tomo-leaf-700: #3f6332;
+
+  /* Primitive: amber */
+  --tomo-amber-50: #fdf3e1;
+  --tomo-amber-600: #a86a12;
+
+  /* Primitive: black alpha */
+  --tomo-black-a40: rgb(0 0 0 / 40%);
+
+  /* Primitive: brand */
+  --tomo-brand-kakao: #fee500;
+  --tomo-brand-kakao-ink: #191919;
+  --tomo-brand-google-blue: #4285f4;
 
   /* Semantic: background colors */
-  --tomo-bg-default: var(--tomo-gray-0);
-  --tomo-bg-subtle: var(--tomo-gray-100);
-  --tomo-bg-muted: var(--tomo-gray-200);
-  --tomo-bg-strong: var(--tomo-gray-900);
-  --tomo-bg-overlay: var(--tomo-black-a50);
+  --tomo-bg-page: var(--tomo-warm-25);
+  --tomo-bg-card: var(--tomo-warm-0);
+  --tomo-bg-soft: var(--tomo-neutral-100);
+  --tomo-bg-well: var(--tomo-neutral-200);
+  --tomo-bg-disabled: var(--tomo-neutral-200);
+  --tomo-bg-control-off: var(--tomo-neutral-300);
+  --tomo-bg-overlay: var(--tomo-black-a40);
+  --tomo-bg-danger: var(--tomo-tomato-50);
+  --tomo-bg-warning: var(--tomo-amber-50);
+  --tomo-bg-success: var(--tomo-leaf-50);
+
+  /* Semantic: text colors */
+  --tomo-text-primary: var(--tomo-warm-900);
+  --tomo-text-secondary: var(--tomo-warm-600);
+  --tomo-text-muted: var(--tomo-warm-500);
+  --tomo-text-disabled: var(--tomo-neutral-500);
+  --tomo-text-on-accent: var(--tomo-warm-0);
+  --tomo-text-danger: var(--tomo-tomato-600);
+  --tomo-text-warning: var(--tomo-amber-600);
+  --tomo-text-success: var(--tomo-leaf-700);
+
+  /* Semantic: accent and status colors */
+  --tomo-accent-tomato: var(--tomo-tomato-500);
+  --tomo-accent-tomato-pressed: var(--tomo-tomato-600);
+  --tomo-accent-tomato-soft: var(--tomo-tomato-50);
+  --tomo-status-done: var(--tomo-leaf-500);
 
   /* Semantic: border colors */
-  --tomo-border-subtle: var(--tomo-gray-300);
-  --tomo-border-default: var(--tomo-gray-400);
-  --tomo-border-strong: var(--tomo-gray-900);
+  --tomo-border-subtle: var(--tomo-neutral-200);
+  --tomo-border-strong: var(--tomo-neutral-300);
+  --tomo-border-focus: var(--tomo-tomato-500);
+  --tomo-border-danger: var(--tomo-tomato-300);
 
-  /* Semantic: chart colors */
-  --tomo-chart-bar: var(--tomo-gray-400);
-  --tomo-chart-bar-current: var(--tomo-gray-900);
-  --tomo-chart-grid: var(--tomo-gray-200);
+  /* Semantic: timer colors */
+  --tomo-timer-focus: var(--tomo-tomato-500);
+  --tomo-timer-break: var(--tomo-leaf-500);
+  --tomo-timer-tick: var(--tomo-neutral-400);
+  --tomo-timer-tick-major: var(--tomo-warm-600);
 
   /* Semantic: heatmap colors */
-  --tomo-heatmap-0: var(--tomo-gray-0);
-  --tomo-heatmap-1: var(--tomo-gray-200);
-  --tomo-heatmap-2: var(--tomo-gray-300);
-  --tomo-heatmap-3: var(--tomo-gray-400);
-  --tomo-heatmap-4: var(--tomo-gray-900);
+  --tomo-heatmap-0: var(--tomo-neutral-200);
+  --tomo-heatmap-1: var(--tomo-leaf-100);
+  --tomo-heatmap-2: var(--tomo-leaf-200);
+  --tomo-heatmap-3: var(--tomo-leaf-300);
+  --tomo-heatmap-4: var(--tomo-leaf-500);
 
-  /* Semantic: effect and annotation colors */
-  --tomo-shadow-dialog: var(--tomo-black-a10);
-  --tomo-annotation-fold: var(--tomo-red-500);
+  /* Semantic: chart colors */
+  --tomo-chart-bar: var(--tomo-neutral-300);
+  --tomo-chart-bar-current: var(--tomo-tomato-500);
+  --tomo-chart-grid: var(--tomo-neutral-200);
+
+  /* Semantic: brand colors */
+  --tomo-brand-kakao-text: var(--tomo-brand-kakao-ink);
+  --tomo-brand-google: var(--tomo-brand-google-blue);
 
   /* Primitive: font families */
   --tomo-font-family-sans: 'Pretendard', Arial, sans-serif;
@@ -184,66 +294,87 @@
   --tomo-font-weight-regular: 400;
   --tomo-font-weight-bold: 700;
 
-  /* Semantic: spacing */
-  --tomo-spacing-4: 4px;
-  --tomo-spacing-8: 8px;
-  --tomo-spacing-12: 12px;
-  --tomo-spacing-16: 16px;
-  --tomo-spacing-24: 24px;
-  --tomo-spacing-32: 32px;
-  --tomo-spacing-48: 48px;
-  --tomo-spacing-64: 64px;
+  /* Dimension: space */
+  --tomo-space-2: 2px;
+  --tomo-space-4: 4px;
+  --tomo-space-8: 8px;
+  --tomo-space-12: 12px;
+  --tomo-space-16: 16px;
+  --tomo-space-20: 20px;
+  --tomo-space-24: 24px;
+  --tomo-space-32: 32px;
+  --tomo-space-40: 40px;
+  --tomo-space-48: 48px;
+  --tomo-space-64: 64px;
+  --tomo-space-80: 80px;
 
   /* Semantic: sizes */
   --tomo-size-control: 44px;
   --tomo-size-content: 1280px;
 
-  /* Semantic: border radii */
-  --tomo-radius-sm: 4px;
-  --tomo-radius-md: 8px;
-  --tomo-radius-full: 9999px;
+  /* Dimension: radius */
+  --tomo-radius-xs: 6px;
+  --tomo-radius-sm: 8px;
+  --tomo-radius-md: 12px;
+  --tomo-radius-lg: 16px;
+  --tomo-radius-xl: 20px;
+  --tomo-radius-2xl: 24px;
+  --tomo-radius-3xl: 36px;
+  --tomo-radius-full: 999px;
 
-  /* Shadcn light theme mappings */
-  --card: var(--tomo-bg-default);
-  --card-foreground: var(--tomo-text-default);
-  --popover: var(--tomo-bg-default);
-  --popover-foreground: var(--tomo-text-default);
-  --primary: var(--tomo-bg-strong);
-  --primary-foreground: var(--tomo-text-inverse);
-  --secondary: var(--tomo-bg-subtle);
-  --secondary-foreground: var(--tomo-text-default);
-  --muted: var(--tomo-bg-subtle);
-  --muted-foreground: var(--tomo-text-subtle);
-  --accent: var(--tomo-bg-subtle);
-  --accent-foreground: var(--tomo-text-default);
-  --destructive: var(--tomo-text-required);
+  /* Effect styles: flat */
+  --tomo-shadow-card: 0 1px 2px #4d3d330d, 0 6px 16px #4d3d330d;
+  --tomo-shadow-popover: 0 2px 6px #2b262414, 0 12px 36px #2b26241f;
+  --tomo-shadow-dialog: 0 4px 12px #2b262414, 0 24px 64px #2b262429;
+
+  /* Effect styles: neumorphism */
+  --tomo-shadow-raised-sm: 3px 3px 6px #a8abb861, -3px -3px 6px #ffffff;
+  --tomo-shadow-raised-md: 6px 6px 14px #a8abb861, -6px -6px 14px #ffffff;
+  --tomo-shadow-raised-lg: 10px 10px 24px #a8abb852, -6px -6px 16px #ffffff8c;
+  --tomo-shadow-inset: inset 3px 3px 6px #a8abb861, inset -3px -3px 6px #ffffff;
+  --tomo-shadow-primary: 0 6px 14px #d94a454d, -3px -3px 8px #ffffffcc;
+
+  /* Shadcn light theme mappings (Figma code syntax) */
+  --card: var(--tomo-bg-card);
+  --card-foreground: var(--tomo-text-primary);
+  --popover: var(--tomo-bg-card);
+  --popover-foreground: var(--tomo-text-primary);
+  --primary: var(--tomo-accent-tomato);
+  --primary-foreground: var(--tomo-text-on-accent);
+  --secondary: var(--tomo-bg-soft);
+  --secondary-foreground: var(--tomo-text-primary);
+  --muted: var(--tomo-bg-well);
+  --muted-foreground: var(--tomo-text-secondary);
+  --accent: var(--tomo-accent-tomato-soft);
+  --accent-foreground: var(--tomo-text-primary);
+  --destructive: var(--tomo-text-danger);
   --border: var(--tomo-border-subtle);
-  --input: var(--tomo-border-default);
-  --ring: var(--tomo-border-default);
+  --input: var(--tomo-border-strong);
+  --ring: var(--tomo-border-focus);
 
   /* Chart colors */
-  --chart-1: var(--tomo-gray-200);
-  --chart-2: var(--tomo-gray-300);
-  --chart-3: var(--tomo-gray-400);
-  --chart-4: var(--tomo-gray-500);
-  --chart-5: var(--tomo-gray-900);
+  --chart-1: var(--tomo-heatmap-1);
+  --chart-2: var(--tomo-heatmap-2);
+  --chart-3: var(--tomo-heatmap-3);
+  --chart-4: var(--tomo-heatmap-4);
+  --chart-5: var(--tomo-chart-bar-current);
 
   /* Shared radius */
   --radius: var(--tomo-radius-sm);
 
   /* Sidebar colors */
-  --sidebar: var(--tomo-bg-subtle);
-  --sidebar-foreground: var(--tomo-text-default);
-  --sidebar-primary: var(--tomo-bg-strong);
-  --sidebar-primary-foreground: var(--tomo-text-inverse);
-  --sidebar-accent: var(--tomo-bg-muted);
-  --sidebar-accent-foreground: var(--tomo-text-default);
+  --sidebar: var(--tomo-bg-soft);
+  --sidebar-foreground: var(--tomo-text-primary);
+  --sidebar-primary: var(--tomo-accent-tomato);
+  --sidebar-primary-foreground: var(--tomo-text-on-accent);
+  --sidebar-accent: var(--tomo-bg-well);
+  --sidebar-accent-foreground: var(--tomo-text-primary);
   --sidebar-border: var(--tomo-border-subtle);
-  --sidebar-ring: var(--tomo-border-default);
+  --sidebar-ring: var(--tomo-border-focus);
 
   /* Page colors */
-  --background: var(--tomo-bg-default);
-  --foreground: var(--tomo-text-default);
+  --background: var(--tomo-bg-page);
+  --foreground: var(--tomo-text-primary);
 }
 
 @layer base {

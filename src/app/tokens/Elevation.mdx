@@ -1,0 +1,56 @@
+import { Meta, Unstyled } from '@storybook/addon-docs/blocks';
+
+<Meta title="Tokens/Elevation" />
+
+# Elevation
+
+그림자는 두 계열로 나뉘며 배경에 따라 골라 씁니다.
+
+- **플랫**: 흰 페이지(`bg-bg-page`, `bg-bg-card`) 위의 정보 카드·팝오버·다이얼로그
+- **뉴모피즘**: `bg-bg-soft` 쟁반 위의 조작부에서만. 흰 바탕에 쓰면 밝은 그림자가 묻혀 효과가 사라집니다.
+
+<br />
+
+## 플랫 (흰 페이지)
+
+export const flat = [
+  { cls: 'shadow-card', figma: 'Elevation/Card' },
+  { cls: 'shadow-popover', figma: 'Elevation/Popover' },
+  { cls: 'shadow-dialog', figma: 'Elevation/Dialog' },
+];
+
+<Unstyled>
+  <div className="flex flex-wrap gap-40 rounded-lg bg-bg-page p-48 font-sans">
+    {flat.map(({ cls, figma }) => (
+      <div key={cls} className="flex flex-col items-center gap-12">
+        <div className={`h-[96px] w-[160px] rounded-lg bg-bg-card ${cls}`} />
+        <code className="text-label">{cls}</code>
+        <span className="text-caption text-text-secondary">{figma}</span>
+      </div>
+    ))}
+  </div>
+</Unstyled>
+
+<br />
+
+## 뉴모피즘 (`bg-bg-soft` 쟁반)
+
+export const soft = [
+  { cls: 'shadow-raised-sm', figma: 'Elevation/Raised sm', fill: 'bg-bg-soft' },
+  { cls: 'shadow-raised-md', figma: 'Elevation/Raised md', fill: 'bg-bg-soft' },
+  { cls: 'shadow-raised-lg', figma: 'Elevation/Raised lg', fill: 'bg-bg-soft' },
+  { cls: 'shadow-inset', figma: 'Elevation/Inset', fill: 'bg-bg-soft' },
+  { cls: 'shadow-primary', figma: 'Elevation/Primary', fill: 'bg-accent-tomato' },
+];
+
+<Unstyled>
+  <div className="flex flex-wrap gap-40 rounded-3xl bg-bg-soft p-48 font-sans">
+    {soft.map(({ cls, figma, fill }) => (
+      <div key={cls} className="flex flex-col items-center gap-12">
+        <div className={`h-[80px] w-[120px] rounded-2xl ${fill} ${cls}`} />
+        <code className="text-label">{cls}</code>
+        <span className="text-caption text-text-secondary">{figma}</span>
+      </div>
+    ))}
+  </div>
+</Unstyled>

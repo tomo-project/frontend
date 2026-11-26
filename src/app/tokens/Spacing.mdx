@@ -4,18 +4,18 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # Spacing
 
-`p-16`, `gap-24`, `mt-8`처럼 px 값 그대로 클래스에 사용합니다.
+`p-16`, `gap-24`, `mt-8`처럼 px 값 그대로 클래스에 사용합니다. 패딩·간격은 이 값만 씁니다.
 
 <br />
 
-export const spacing = [4, 8, 12, 16, 24, 32, 48, 64];
+export const spacing = [2, 4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 80];
 
 <div className="flex flex-col gap-12 font-sans">
   {spacing.map((n) => (
     <div key={n} className="flex items-center gap-16">
       <code className="w-[120px] shrink-0">spacing-{n}</code>
-      <div className="h-16 bg-bg-strong" style={{ width: `var(--tomo-spacing-${n})` }} />
-      <span className="text-small text-text-subtle">{n}px</span>
+      <div className="h-16 bg-accent-tomato" style={{ width: `var(--tomo-space-${n})` }} />
+      <span className="text-label text-text-secondary">{n}px</span>
     </div>
   ))}
 </div>
@@ -60,28 +60,29 @@ export const spacing = [4, 8, 12, 16, 24, 32, 48, 64];
 # Radius
 
 export const radii = [
-  { name: 'rounded-sm', v: 'var(--tomo-radius-sm)', px: '4px' },
-  { name: 'rounded-md', v: 'var(--tomo-radius-md)', px: '8px' },
-  { name: 'rounded-full', v: 'var(--tomo-radius-full)', px: '9999px' },
+  { name: 'rounded-xs', v: 'var(--tomo-radius-xs)', px: '6px' },
+  { name: 'rounded-sm', v: 'var(--tomo-radius-sm)', px: '8px' },
+  { name: 'rounded-md', v: 'var(--tomo-radius-md)', px: '12px' },
+  { name: 'rounded-lg', v: 'var(--tomo-radius-lg)', px: '16px' },
+  { name: 'rounded-xl', v: 'var(--tomo-radius-xl)', px: '20px' },
+  { name: 'rounded-2xl', v: 'var(--tomo-radius-2xl)', px: '24px' },
+  { name: 'rounded-3xl', v: 'var(--tomo-radius-3xl)', px: '36px' },
+  { name: 'rounded-full', v: 'var(--tomo-radius-full)', px: '999px' },
 ];
 
-<div className="flex gap-32 font-sans">
+<div className="flex flex-wrap gap-32 font-sans">
   {radii.map(({ name, v, px }) => (
     <div key={name} className="flex flex-col items-center gap-8">
       <div
-        className="size-[80px] border border-border-strong bg-bg-subtle"
+        className="size-[80px] border border-border-strong bg-bg-soft"
         style={{ borderRadius: v }}
       />
       <code>{name}</code>
-      <span className="text-caption text-text-subtle">{px}</span>
+      <span className="text-caption text-text-secondary">{px}</span>
     </div>
   ))}
 </div>
 
 <br />
 
-# Shadow
-
-<div className="mt-16 w-[240px] rounded-md bg-bg-default p-24 font-sans shadow-dialog">
-  <code>shadow-dialog</code>
-</div>
+그림자는 **Tokens/Elevation**에 있습니다.
